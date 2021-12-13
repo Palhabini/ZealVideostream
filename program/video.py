@@ -4,7 +4,7 @@ import asyncio
 from config import ASSISTANT_NAME, BOT_USERNAME, IMG_1, IMG_2
 from driver.filters import command, other_filters
 from driver.queues import QUEUE, add_to_queue
-from driver.veez import call_py, user
+from driver.zeal import call_py, user
 from pyrogram import Client
 from pyrogram.errors import UserAlreadyParticipant, UserNotParticipant
 from pyrogram.types import InlineKeyboardButton, InlineKeyboardMarkup, Message
@@ -196,8 +196,8 @@ async def vplay(c: Client, m: Message):
                     url = search[1]
                     duration = search[2]
                     thumbnail = search[3]
-                    veez, ytlink = await ytdl(url)
-                    if veez == 0:
+                    zeal, ytlink = await ytdl(url)
+                    if zeal == 0:
                         await loser.edit(f"❌ yt-dl issues detected\n\n» `{ytlink}`")
                     else:
                         if chat_id in QUEUE:
@@ -253,8 +253,8 @@ async def vplay(c: Client, m: Message):
                 url = search[1]
                 duration = search[2]
                 thumbnail = search[3]
-                veez, ytlink = await ytdl(url)
-                if veez == 0:
+                zeal, ytlink = await ytdl(url)
+                if zeal == 0:
                     await loser.edit(f"❌ yt-dl issues detected\n\n» `{ytlink}`")
                 else:
                     if chat_id in QUEUE:
@@ -387,12 +387,12 @@ async def vstream(c: Client, m: Message):
         regex = r"^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+"
         match = re.match(regex, link)
         if match:
-            veez, livelink = await ytdl(link)
+            zeal, livelink = await ytdl(link)
         else:
             livelink = link
-            veez = 1
+            zeal = 1
 
-        if veez == 0:
+        if zeal == 0:
             await loser.edit(f"❌ yt-dl issues detected\n\n» `{livelink}`")
         else:
             if chat_id in QUEUE:
