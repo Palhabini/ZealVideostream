@@ -164,7 +164,7 @@ async def play(c: Client, m: Message):
                     url = search[1]
                     duration = search[2]
                     thumbnail = search[3]
-                    format = "bestaudio"
+                    format = "bestaudio[ext=m4a]"
                     zeal, ytlink = await ytdl(format, url)
                     if zeal == 0:
                         await suhu.edit(f"❌ yt-dl issues detected\n\n» `{ytlink}`")
@@ -218,7 +218,7 @@ async def play(c: Client, m: Message):
                 url = search[1]
                 duration = search[2]
                 thumbnail = search[3]
-                format = "bestaudio"
+                format = "bestaudio[ext=m4a]"
                 zeal, ytlink = await ytdl(format, url)
                 if zeal == 0:
                     await suhu.edit(f"❌ yt-dl issues detected\n\n» `{ytlink}`")
