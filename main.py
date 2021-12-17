@@ -2,15 +2,14 @@ import asyncio
 from pytgcalls import idle
 from driver.zeal import call_py, bot
 
-async def mulai_bot():
-    print("[ZEAL]: STARTING BOT CLIENT")
+async def start_bot():
+    print("[INFO]: STARTING BOT CLIENT")
     await bot.start()
-    print("[ZEAL]: STARTING PYTGCALLS CLIENT")
+    print("[INFO]: STARTING PYTGCALLS CLIENT")
     await call_py.start()
     await idle()
-    await pidle()
-    print("[ZEAL]: STOPPING BOT & USERBOT")
+    print("[INFO]: STOPPING BOT & USERBOT")
     await bot.stop()
 
 loop = asyncio.get_event_loop()
-loop.run_until_complete(mulai_bot())
+loop.run_until_complete(start_bot())
